@@ -4,7 +4,7 @@ import Dashboard from './Dashboard'
 export const About = () => {
   return (
     <div>
-        <Dashboard/>
+      <Dashboard />
     </div>
   )
 }

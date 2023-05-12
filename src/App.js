@@ -15,7 +15,7 @@ import WorkExperienceForm from "./components/WorkExperienceForm";
 import LeaveApplicationForm from "./components/LeaveApplicationForm";
 import SalaryForm from "./components/SalaryForm";
 import CalendarWithHolidays from "./components/CalendarWithHolidays";
-import Dashboard from "./components/Dashboard";
+// import Dashboard from "./components/Dashboard";
 
 
 function App() {
@@ -29,18 +29,16 @@ function App() {
 
         <Route path="/About" element={<About />} />
       </Routes>
-      <Dashboard/>
       <Routes>
-        <Route path="/PersonalInformationForm" element={<PersonalInformationForm />}/>
-      <Route path="/EducationForm" element={<EducationForm />}/>
-      <Route path="/DependentsForm" element={<DependentsForm />}/>
-      <Route path="/WorkExperienceForm" element={<WorkExperienceForm />}/>
-      <Route path="/LeaveApplicationForm" element={<LeaveApplicationForm />}/>
-      <Route path="/SalaryForm" element={<SalaryForm/>}/>
-      <Route path="/CalendarWithHolidays" element={<CalendarWithHolidays/>}/>
-   
+        <Route path="/PersonalInformationForm" element={<PersonalInformationForm />} />
+        <Route path="/EducationForm" element={<EducationForm />} />
+        <Route path="/DependentsForm" element={<DependentsForm />} />
+        <Route path="/WorkExperienceForm" element={<WorkExperienceForm />} />
+        <Route path="/LeaveApplicationForm" element={<LeaveApplicationForm />} />
+        <Route path="/SalaryForm" element={<SalaryForm />} />
+        <Route path="/CalendarWithHolidays" element={<CalendarWithHolidays />} />
       </Routes>
-      
+
     </>
   );
 }
