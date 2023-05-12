@@ -21,7 +21,7 @@ const NavBar = () => {
   }, [isLogin] )
 
   return (
-    <nav className="bg-blue-800">
+    <nav className="bg-blue-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div className="flex flex-row items-center">
