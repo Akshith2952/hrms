@@ -2,7 +2,9 @@ import React from 'react'
 
 const emp = () => {
   return (
-    <div>emp</div>
+    <div>
+      <p>Hello</p>
+    </div>
   )
 }
 
