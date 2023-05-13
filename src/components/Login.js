@@ -9,15 +9,17 @@ const Login = ({ history }) => {
 
   const [user, setUser] = useState({ email: "", password: "" });
   //   const [error, setError] = useState("");
-    const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState();
 
-    useEffect(() => {
-      const userInfo = localStorage.getItem("userInfo");
+  // useEffect(() => {
 
-      if (userInfo) {
-        navigate("/Home");
-      }
-    }, [history, user, navigate]);
+  //   const userInfo = localStorage.getItem("userInfo");
+
+  //   if (userInfo) {
+  //     navigate("/Home");
+  //   }
+
+  // }, [history, user, navigate]);
 
   let key, val;
   const handleInputs = (e) => {
@@ -29,24 +31,32 @@ const Login = ({ history }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = user;
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      setLoading(true);
-      const { data } = await axios.post(
-        "http://localhost:5000/signin",
-        { email, password },
-        config
-      );
-      console.log(data);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false);
-    } catch (err) {
-      //   setError(err.response.data.message);
-      //   setLoading(false);
+    console.log(password);
+    if( email.toString() === "hr@gmail.com" ){
+
+      navigate('/hr/dashboard')
+    }
+    else {
+      try {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        setLoading(true);
+        const { data } = await axios.post(
+          "http://localhost:5000/signin",
+          { email, password },
+          config
+        );
+        console.log(data);
+        navigate("/Home");
+        // localStorage.setItem("userInfo", JSON.stringify(data));
+        setLoading(false);
+      } catch (err) {
+        //   setError(err.response.data.message);
+          setLoading(false);
+      }
     }
   };
 

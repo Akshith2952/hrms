@@ -15,18 +15,29 @@ import WorkExperienceForm from "./components/WorkExperienceForm";
 import LeaveApplicationForm from "./components/LeaveApplicationForm";
 import SalaryForm from "./components/SalaryForm";
 import CalendarWithHolidays from "./components/CalendarWithHolidays";
+import HR from "./components/HR/HR";
+import Employee from "./components/Employee";
+import HRDashBoard from "./components/HR/HRDashBoard";
 // import Dashboard from "./components/Dashboard";
 
 
 function App() {
   return (
     <>
-      <NavBar />
+
+
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/hr" element={<HR />}>
+          <Route path="dashboard" element={<HRDashBoard />} />
+          <Route path="salary/add" element={<HRDashBoard />} />
+          <Route path="employee/add" element={<HRDashBoard />} />
+        </Route>
+
+        {/* <Route path="/hr/dashboard" element={<HRDashBoard /> } /> */}
+        <Route path="/employee" element={<Employee />} />
         <Route path="/Home" element={<MainHome />} />
         <Route path="/Login" element={<Login />} />
-
         <Route path="/About" element={<About />} />
       </Routes>
       <Routes>

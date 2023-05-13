@@ -1,8 +1,10 @@
 import React from "react";
+import NavBar from "./Navbar";
 
 export const Home = () => {
   return (
     <>
+    <NavBar />
       <div className="bg-gray-100  flex flex-col justify-between">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-4xl font-bold text-center text-gray-800">

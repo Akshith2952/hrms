@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const employeeRoutes = require('./router/EmployeeRoutes');
+const salaryRoutes = require('./router/SaalaryRoutes');
+const LeaveRoutes = require('./router/LeaveRoutes');
+
 app.use(cors({ origin: "*" }));
 
 dotenv.config({ path: "./config.env" });
@@ -45,6 +49,12 @@ app.get("/signup", (req, res) => {
   res.send(`Hello Registration world from the server`);
 });
 
+app.use( '/employee', employeeRoutes )
+
+app.use( '/salary', salaryRoutes )
+
+app.use( '/leaves', LeaveRoutes )
+
 app.listen(PORT, () => {
-  console.log(`server is runnig at port no ${PORT}`);
+  console.log(`server is running at port no ${PORT}`);
 });
