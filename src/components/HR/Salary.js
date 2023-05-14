@@ -39,7 +39,12 @@ console.log(salary);
     <>
       {IsFormOpen && 
       <div>
-      <button onClick={ () => setIsFormOpen(false) } >back</button>
+      <button
+  onClick={() => setIsFormOpen(false)}
+  className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+>
+  Back
+</button>
       <SalaryForm set={setIsFormOpen} />
       </div>
       }
@@ -57,16 +62,16 @@ console.log(salary);
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">
-              Product name
+              Name
             </th>
             <th scope="col" class="px-6 py-3">
-              Color
+              Employee Id
             </th>
             <th scope="col" class="px-6 py-3">
-              Category
+              Bank
             </th>
             <th scope="col" class="px-6 py-3">
-              Price
+              Salary
             </th>
             <th scope="col" class="px-6 py-3">
               <span class="sr-only">Edit</span>

@@ -56,12 +56,24 @@ const Employees = () => {
           {isEdit &&
           <div>
             <EmployeeUpdateForm />
-            <button onClick={ () => setIsEdit(false) } >back</button>
+            <button
+  onClick={() => setIsEdit(false)}
+  className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+>
+  Back
+</button>
+
             </div>
           }
           {isView &&
           <div>
-            <button onClick={ () => setIsView(false) } >back</button>
+            <button
+  onClick={() => setIsEdit(false)}
+  className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+>
+  Back
+</button>
+
             <PersonalInformationForm />
             <EducationForm />
             <DependentsForm />
@@ -73,16 +85,16 @@ const Employees = () => {
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="px-6 py-3">
-                    Product name
+                    Employee Id
                   </th>
                   <th scope="col" class="px-6 py-3">
-                    Color
+                    Name
                   </th>
                   <th scope="col" class="px-6 py-3">
-                    Category
+                    Email
                   </th>
                   <th scope="col" class="px-6 py-3">
-                    Price
+                    Department
                   </th>
                   <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Edit</span>

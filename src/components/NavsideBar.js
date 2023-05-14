@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavsideBar = () => {
   return (
     <div>
-      <nav className="flex-grow">
+    <nav className="flex-grow">
         <ul className="space-y-2 py-4 px-6">
           <li className="border-l-4 border-transparent hover:bg-gray-700">
             <Link to="/PersonalInformationForm" className="flex items-center">
