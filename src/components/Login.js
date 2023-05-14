@@ -32,11 +32,9 @@ const Login = ({ history }) => {
     e.preventDefault();
     const { email, password } = user;
     console.log(password);
-    if( email.toString() === "hr@gmail.com" ){
-
-      navigate('/hr/dashboard')
-    }
-    else {
+    if (email.toString() === "hr@gmail.com") {
+      navigate("/hr/dashboard");
+    } else {
       try {
         const config = {
           headers: {
@@ -55,7 +53,7 @@ const Login = ({ history }) => {
         setLoading(false);
       } catch (err) {
         //   setError(err.response.data.message);
-          setLoading(false);
+        setLoading(false);
       }
     }
   };
