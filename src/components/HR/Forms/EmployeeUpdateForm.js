@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const EmployeeForm = () => {
+const EmployeeUpdateForm = () => {
   const nav = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -223,4 +223,4 @@ const EmployeeForm = () => {
   );
 };
 
-export default EmployeeForm;
+export default EmployeeUpdateForm;

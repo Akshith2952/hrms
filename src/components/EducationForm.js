@@ -15,6 +15,7 @@ const EducationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform form submission or data processing here
+    
     console.log(formData);
   };
 

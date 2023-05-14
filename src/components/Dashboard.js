@@ -8,6 +8,7 @@ import SalaryForm from './SalaryForm';
 import CalendarWithHolidays from './CalendarWithHolidays';
 import LeaveApplicationForm from './LeaveApplicationForm';
 
+
 const Dashboard = () => {
 
   const [activeTab, setActiveTab] = useState("PersonalInformationForm");
@@ -17,7 +18,6 @@ const Dashboard = () => {
   };
 
   return (
-
     <div className="flex h-screen overflow-hidden">
       <div className="bg-gray-500 text-gray-500 w-64 flex flex-col">
         {/* logo <div className="h-20 flex items-center justify-center">

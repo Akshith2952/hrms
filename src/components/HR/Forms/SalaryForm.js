@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const SalaryForm = () => {
-  const [selectedEmployee, setSelectedEmployee] = useState('');
+const SalaryForm = (props) => {
+  const [employeeName, setSelectedEmployee] = useState('');
   const [basicSalary, setBasicSalary] = useState('');
   const [bankName, setBankName] = useState('');
   const [accountNo, setAccountNo] = useState('');
@@ -10,11 +10,19 @@ const SalaryForm = () => {
   const [ifscCode, setIfscCode] = useState('');
   const [taxDeduction, setTaxDeduction] = useState('');
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const sal = { selectedEmployee, basicSalary, bankName, accountNo, accountHolderName, ifscCode, taxDeduction }
-    await axios.post( 'http://localhost:5000/salary/add', sal );
     // Handle form submission logic here
+    try {
+      const res = await axios.post('http://localhost:5000/salary', { employeeName, basicSalary, bankName, accountNo, accountHolderName, ifscCode, taxDeduction });
+      console.log(res.data);
+      props.set(false)
+      // do something with the response, like redirect to a success page or show a success message
+    } catch (error) {
+      console.error(error);
+      // handle error, like showing an error message to the user
+    }
   };
 
   return (
@@ -27,7 +35,7 @@ const SalaryForm = () => {
           </label>
           <select
             id="employee"
-            value={selectedEmployee}
+            value={employeeName}
             onChange={(e) => setSelectedEmployee(e.target.value)}
             className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-500"
             required

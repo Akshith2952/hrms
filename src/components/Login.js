@@ -48,7 +48,7 @@ const Login = ({ history }) => {
           config
         );
         console.log(data);
-        navigate("/Home");
+        navigate("/employee/Home");
         // localStorage.setItem("userInfo", JSON.stringify(data));
         setLoading(false);
       } catch (err) {

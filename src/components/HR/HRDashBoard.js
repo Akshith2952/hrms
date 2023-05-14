@@ -8,7 +8,7 @@ import Employees from './Employees';
 
 const HRDashBoard = () => {
 
-  const [activeTab, setActiveTab] = useState("PersonalInformationForm");
+  const [activeTab, setActiveTab] = useState("Employees");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -16,7 +16,7 @@ const HRDashBoard = () => {
 
   return (
 
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-y-auto">
       <div className="bg-gray-500 text-gray-500 w-64 flex flex-col">
         {/* logo <div className="h-20 flex items-center justify-center">
           <span className="text-white text-2xl font-bold">Logo</span>

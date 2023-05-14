@@ -3,7 +3,7 @@ const router = express.Router();
 const salaryController = require('../Controllers/SalaryController');
 
 // Create salary
-router.post('/add', salaryController.createSalary);
+router.post('/', salaryController.createSalary);
 
 // Get all salaries
 router.get('/', salaryController.getAllSalaries);

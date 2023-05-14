@@ -49,7 +49,7 @@ app.get("/signup", (req, res) => {
   res.send(`Hello Registration world from the server`);
 });
 
-app.use( '/employee', employeeRoutes )
+app.use( '/employees', employeeRoutes )
 
 app.use( '/salary', salaryRoutes )
 

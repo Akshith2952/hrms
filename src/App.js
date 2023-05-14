@@ -18,14 +18,13 @@ import CalendarWithHolidays from "./components/CalendarWithHolidays";
 import HR from "./components/HR/HR";
 import Employee from "./components/Employee";
 import HRDashBoard from "./components/HR/HRDashBoard";
+import Dashboard from "./components/Dashboard";
 // import Dashboard from "./components/Dashboard";
 
 
 function App() {
   return (
     <>
-
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hr" element={<HR />}>
@@ -35,8 +34,10 @@ function App() {
         </Route>
 
         {/* <Route path="/hr/dashboard" element={<HRDashBoard /> } /> */}
-        <Route path="/employee" element={<Employee />} />
-        <Route path="/Home" element={<MainHome />} />
+        <Route path="/employee" element={<Employee />}>
+          <Route path="Home" element={<MainHome />} />
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
         <Route path="/Login" element={<Login />} />
         <Route path="/About" element={<About />} />
       </Routes>
@@ -49,7 +50,6 @@ function App() {
         <Route path="/SalaryForm" element={<SalaryForm />} />
         <Route path="/CalendarWithHolidays" element={<CalendarWithHolidays />} />
       </Routes>
-
     </>
   );
 }
