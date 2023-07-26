@@ -7,6 +7,7 @@ import WorkExperienceForm from './WorkExperienceForm';
 import SalaryForm from './SalaryForm';
 import CalendarWithHolidays from './CalendarWithHolidays';
 import LeaveApplicationForm from './LeaveApplicationForm';
+import ChangePasswordForm from './ChangePasswordForm';
 
 
 const Dashboard = () => {
@@ -105,6 +106,16 @@ const Dashboard = () => {
                 <span className="text-white">Upcoming Holidays</span>
               </Link>
             </li>
+            <li className="border-l-4 border-transparent hover:bg-gray-700">
+              <Link className={`flex items-center ${activeTab === "ChangePasswordForm" && "text-blue-700 font-bold"}`} onClick={() => handleTabClick("ChangePasswordForm")} >
+                <span className="mr-2">
+                  <svg className="w-6 h-6 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                    {/* Add appropriate SVG icon here */}
+                  </svg>
+                </span>
+                <span className="text-white">Change Password</span>
+              </Link>
+            </li>
 
           </ul>
         </div>
@@ -154,6 +165,11 @@ const Dashboard = () => {
         {activeTab === "CalendarWithHolidays" && (
           <div className="bg-white p-6 border-l border-r border-b">
             <CalendarWithHolidays />
+          </div>
+        )}
+        {activeTab === "ChangePasswordForm" && (
+          <div className="bg-white p-6 border-l border-r border-b">
+            <ChangePasswordForm />
           </div>
         )}
 

@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const NavBar = () => {
+
+  const n = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem("userInfo");
+    n('/Login')
+    // window.location('/Login')
+  }
  
   useEffect( () => {
     //console.log(isLogin);
@@ -51,6 +59,11 @@ const NavBar = () => {
               >
                 Login
               </a>
+              <button
+                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleLogout}
+              >
+                Logout
+              </button>
             </div>
           </div>
           {/* <div className="-mr-2 flex md:hidden">

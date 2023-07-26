@@ -82,6 +82,17 @@ const NavsideBar = () => {
               <span className="text-white">Upcoming Holidays</span>
             </Link>
           </li>
+          <li className="border-l-4 border-transparent hover:bg-gray-700">
+            <Link to="/ChangePasswordForm" className="flex items-center">
+              <span className="mr-2">
+                <svg className="w-6 h-6 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"
+                >
+                  {/* Add appropriate SVG icon here */}
+                </svg>
+              </span>
+              <span className="text-white">Change Password</span>
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

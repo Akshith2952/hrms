@@ -67,12 +67,7 @@ const Employees = () => {
           }
           {isView &&
           <div>
-            <button
-  onClick={() => setIsEdit(false)}
-  className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
->
-  Back
-</button>
+            <button onClick={() => setIsEdit(false)} className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"> Back </button>
 
             <PersonalInformationForm />
             <EducationForm />

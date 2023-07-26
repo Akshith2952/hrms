@@ -16,7 +16,7 @@ const userSchema = new mongooose.Schema({
     },
     work: {
          type: String,
-        required:true
+         default:"Employee"
     },
     password: {
          type: String,

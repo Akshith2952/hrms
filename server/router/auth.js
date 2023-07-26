@@ -35,14 +35,14 @@ router.get("/", (req, res) => {
 //using asyn await
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
-  if (!name || !email || !phone || !work || !password || !cpassword) {
+  if (!name || !email || !phone || !password || !cpassword) {
     return res.status(422).json({ error: "plz fill the filds properly" });
   }
   try {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
       return res.status(422).json({ error: "Email already Exists" });
-    } else if (password != cpassword) {
+    } else if (password !== cpassword) {
       return res.status(422).json({ error: "Email already Exists" });
     } else {
       //middleware(hashing)

@@ -11,7 +11,7 @@ const EmployeeForm = () => {
   const [gender, setGender] = useState('');
   const [name, setName] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
-  const [contactNumber, setContactNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const [employeeCode, setEmployeeCode] = useState('');
   const [department, setDepartment] = useState('');
   const [dateOfJoining, setDateOfJoining] = useState('');
@@ -20,7 +20,16 @@ const EmployeeForm = () => {
     e.preventDefault();
     // Handle form submission logic here
     try {
-      const res = await axios.post('http://localhost:5000/employees', {
+      let cpassword = password
+      let contactNumber = phone
+      const res = await axios.post('http://localhost:5000/register', {
+        email,
+        password,
+        cpassword,
+        name,
+        phone
+      });
+      const res2 = await axios.post('http://localhost:5000/employees', {
         email,
         password,
         role,
@@ -162,8 +171,8 @@ const EmployeeForm = () => {
       <input
         type="tel"
         id="contactNumber"
-        value={contactNumber}
-        onChange={(e) => setContactNumber(e.target.value)}
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
         required
       />

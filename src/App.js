@@ -19,6 +19,7 @@ import HR from "./components/HR/HR";
 import Employee from "./components/Employee";
 import HRDashBoard from "./components/HR/HRDashBoard";
 import Dashboard from "./components/Dashboard";
+import ChangePasswordForm from "./components/ChangePasswordForm";
 // import Dashboard from "./components/Dashboard";
 
 
@@ -49,6 +50,7 @@ function App() {
         <Route path="/LeaveApplicationForm" element={<LeaveApplicationForm />} />
         <Route path="/SalaryForm" element={<SalaryForm />} />
         <Route path="/CalendarWithHolidays" element={<CalendarWithHolidays />} />
+        <Route path="/ChangePasswordForm" element={<ChangePasswordForm />} />
       </Routes>
     </>
   );
