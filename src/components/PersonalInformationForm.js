@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const PersonalInformationForm = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    gender: '',
-    address: '',
-    dateOfBirth: '',
+    name: "",
+    email: "",
+    phone: "",
+    gender: "",
+    address: "",
+    dateOfBirth: "",
   });
 
   const handleChange = (e) => {
@@ -27,31 +26,23 @@ const PersonalInformationForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="firstName" className="block font-medium text-gray-800">First Name</label>
+            <label htmlFor="name" className="block font-medium text-gray-800">
+              Name
+            </label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
             />
           </div>
           <div>
-            <label htmlFor="lastName" className="block font-medium text-gray-800">Last Name</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              className="border border-gray-300 rounded-md p-2 w-full"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block font-medium text-gray-800">Email</label>
+            <label htmlFor="email" className="block font-medium text-gray-800">
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -63,7 +54,9 @@ const PersonalInformationForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="phone" className="block font-medium text-gray-800">Phone</label>
+            <label htmlFor="phone" className="block font-medium text-gray-800">
+              Phone
+            </label>
             <input
               type="text"
               id="phone"
@@ -75,7 +68,9 @@ const PersonalInformationForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="gender" className="block font-medium text-gray-800">Gender</label>
+            <label htmlFor="gender" className="block font-medium text-gray-800">
+              Gender
+            </label>
             <select
               id="gender"
               name="gender"
@@ -91,7 +86,12 @@ const PersonalInformationForm = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="address" className="block font-medium text-gray-800">Address</label>
+            <label
+              htmlFor="address"
+              className="block font-medium text-gray-800"
+            >
+              Address
+            </label>
             <textarea
               id="address"
               name="address"
@@ -102,7 +102,12 @@ const PersonalInformationForm = () => {
             ></textarea>
           </div>
           <div>
-            <label htmlFor="dateOfBirth" className="block font-medium text-gray-800">Date of Birth</label>
+            <label
+              htmlFor="dateOfBirth"
+              className="block font-medium text-gray-800"
+            >
+              Date of Birth
+            </label>
             <input
               type="date"
               id="dateOfBirth"
@@ -114,18 +119,17 @@ const PersonalInformationForm = () => {
             />
           </div>
         </div>
-      <div className="flex justify-center">
-  <button
-    type="submit"
-    className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 mt-4 rounded-md"
-  >
-    Save
-  </button>
-</div>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 mt-4 rounded-md"
+          >
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );
 };
 
 export default PersonalInformationForm;
-
