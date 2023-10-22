@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const createUser = async (req, res) => {
   try {
-    let password = bcrypt.hash(req.body.password);
+    let password = await bcrypt.hash(req.body.password, 3);
     const { email, name, phone, work } = req.body;
 
     const newUser = new User({
@@ -17,7 +17,7 @@ const createUser = async (req, res) => {
     await newUser.save();
     res
       .status(201)
-      .json({ message: 'User created successfully', data: newEmployee });
+      .json({ message: 'User created successfully', data: newUser });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
@@ -26,14 +26,12 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const updatedUser = await Employee.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true },
-    );
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.status(200).json({
       message: 'User updated successfully',
-      data: updatedEmployee,
+      data: updatedUser,
     });
   } catch (error) {
     console.error(error);

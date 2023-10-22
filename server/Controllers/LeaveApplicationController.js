@@ -14,12 +14,10 @@ const createLeave = async (req, res) => {
       leaveStatus: 'Pending',
     });
     await newLeave.save();
-    res
-      .status(201)
-      .json({
-        message: 'Leave application created successfully',
-        data: newLeave,
-      });
+    res.status(201).json({
+      message: 'Leave application created successfully',
+      data: newLeave,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
@@ -73,12 +71,11 @@ const updateLeaveById = async (req, res) => {
 const deleteLeaveById = async (req, res) => {
   const { id } = req.params;
   try {
-    const leave = await Leave.findById(id);
+    const leave = await Leave.findByIdAndDelete(id);
     if (!leave) {
       return res.status(404).json({ message: 'Leave not found' });
     }
-    await leave.remove();
-    res.json({ message: 'Leave deleted successfully' });
+    res.json({ message: 'Leave deleted successfully', data: leave });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });

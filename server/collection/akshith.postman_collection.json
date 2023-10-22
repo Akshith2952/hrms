@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "8296f75e-953b-4b86-b9de-86f817aa8b6b",
+		"name": "akshith",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20129859",
+		"_collection_link": "https://lunar-crater-302588.postman.co/workspace/My-Workspace~93acf8ef-bb04-49a3-8469-44f490634872/collection/20129859-8296f75e-953b-4b86-b9de-86f817aa8b6b?source=collection_link"
+	},
+	"item": [
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "get all employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/employees/6534f72abcbbc05afe401283",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"6534f72abcbbc05afe401283"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateemployee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"tester1\"\r\n  \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/employees/6534f72abcbbc05afe401283",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"6534f72abcbbc05afe401283"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tester@gmail.com\",\r\n        \"password\": \"123\",\r\n        \"role\": \"employee\",\r\n        \"gender\": \"male\",\r\n        \"name\": \"tester1\",\r\n        \"dateOfBirth\": \"2023-05-15T00:00:00.000Z\",\r\n        \"contactNumber\": \"568425568\",\r\n        \"employeeCode\": \"123456\",\r\n        \"department\": \"it\",\r\n        \"dateOfJoining\": \"2023-05-25T00:00:00.000Z\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete an employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/employees/6534f72abcbbc05afe401283",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"6534f72abcbbc05afe401283"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"mihir7@gmail.com\",\r\n    \"password\": \"abc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"test\",\r\n    \"email\" : \"test1@gmail\",\r\n    \"phone\": \"123\",\r\n    \"work\" : \"IT\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/users/6534f9d1cbd01fad2f820f3d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"6534f9d1cbd01fad2f820f3d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"tester\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/users/6534f9d1cbd01fad2f820f3d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"6534f9d1cbd01fad2f820f3d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/users/6534f9d1cbd01fad2f820f3d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"6534f9d1cbd01fad2f820f3d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "salary",
+			"item": [
+				{
+					"name": "get all salary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/salary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"salary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create salary",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"tester\",\r\n    \"name\": \"John Doe\",\r\n            \"basicSalary\": 50000,\r\n            \"bankName\": \"HDFC Bank\",\r\n            \"accountNo\": \"1234567890123456\",\r\n            \"accountHolderName\": \"John Doe\",\r\n            \"ifscCode\": \"HDFC0000123\",\r\n            \"taxDeduction\": 15000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/salary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"salary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update salary",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taxDeduction\" : 17000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/salary/6534fb0a7bdda70f19871015",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"salary",
+								"6534fb0a7bdda70f19871015"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get salary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/salary/6534fb0a7bdda70f19871015",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"salary",
+								"6534fb0a7bdda70f19871015"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete salary",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/salary/6534fb0a7bdda70f19871015",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"salary",
+								"6534fb0a7bdda70f19871015"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "leaves",
+			"item": [
+				{
+					"name": "get all leaves",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/leaves",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"leaves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a leave",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/leaves/645ff64ed31d675b8bf98663",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"leaves",
+								"645ff64ed31d675b8bf98663"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create leave",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hero\",\r\n    \"email\" : \"test@gmail.com\",\r\n        \"leaveType\": \"sick\",\r\n        \"startDate\": \"2022-05-01T00:00:00.000Z\",\r\n        \"endDate\": \"2022-05-03T00:00:00.000Z\",\r\n        \"reason\": \"I am feeling unwell and need some time to rest and recover.\",\r\n        \"leaveStatus\": \"Pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/leaves",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"leaves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update leave",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"leaveStatus\" : \"Done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/leaves/653501994f8325441a5bd779",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"leaves",
+								"653501994f8325441a5bd779"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete leave",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/leaves/653501994f8325441a5bd779",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"leaves",
+								"653501994f8325441a5bd779"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

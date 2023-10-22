@@ -1,5 +1,7 @@
 const User = require('../models/userSchema');
-const jwt = rqeuire('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const Salary = require('../models/SalaryModel');
 
 exports.login = async (req, res) => {
   try {
@@ -8,6 +10,14 @@ exports.login = async (req, res) => {
       return res.status(400).json({ error: 'plz fill the details' });
     }
 
+    if (email == 'hr@gmail.com' && password == 'hr123') {
+      const token = jwt.sign({ _id: email }, process.env.SECRET_KEY);
+      res.cookie('jwttoken', token, {
+        expires: new Date(Date.now() + 25892000000),
+        httponly: true,
+      });
+      return res.json({ name: 'hr', email: email });
+    }
     const userLogin = await User.findOne({ email: email });
 
     if (!userLogin) {
@@ -21,7 +31,13 @@ exports.login = async (req, res) => {
           expires: new Date(Date.now() + 25892000000),
           httponly: true,
         });
-        res.json({ name: userLogin.name, email: userLogin.email });
+        const salary = await Salary.find({ email });
+        res.json({
+          name: userLogin.name,
+          email: userLogin.email,
+          salary,
+          token: token,
+        });
       } else {
         res.status(400).json({ message: 'Invalid credentials' });
       }
