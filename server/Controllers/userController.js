@@ -38,7 +38,6 @@ const updateUser = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
