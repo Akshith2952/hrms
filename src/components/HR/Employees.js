@@ -1,81 +1,92 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import EmployeeUpdateForm from './Forms/EmployeeUpdateForm';
-import DependentsForm from '../DependentsForm';
-import PersonalInformationForm from '../PersonalInformationForm';
-import EducationForm from '../EducationForm';
-import WorkExperienceForm from '../WorkExperienceForm';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import EmployeeUpdateForm from "./Forms/EmployeeUpdateForm";
+import DependentsForm from "../DependentsForm";
+import PersonalInformationFormView from "../PersonalInformationFormView";
+import EducationForm from "../EducationForm";
+import WorkExperienceForm from "../WorkExperienceForm";
 
 const Employees = () => {
   const navigate = useNavigate();
 
-  const [isEdit, setIsEdit] = useState(false)
-  const [isView, setIsView] = useState(false)
+  const [isEdit, setIsEdit] = useState(false);
+  const [isView, setIsView] = useState(false);
 
   const handleClick = () => {
-    navigate('/hr/employee/add');
+    navigate("/hr/employee/add");
   };
 
   const [employeeData, setEmployeeData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/employees')
-      .then(response => {
+    axios
+      .get("http://localhost:5000/employees")
+      .then((response) => {
         setEmployeeData(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }, []);
 
-
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/employees/${id}`)
-      .then(response => {
+    axios
+      .delete(`http://localhost:5000/employees/${id}`)
+      .then((response) => {
         setEmployeeData(response.data);
         window.location.reload();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   return (
     <>
-      {!isEdit &&
+      {!isEdit && (
         <div className="flex items-center justify-between bg-gray-200 p-4">
           <h2 className="text-2xl font-bold text-gray-800">Employee Details</h2>
-          <button onClick={handleClick} className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"> Add Employee</button>
-        </div>}
-
+          <button
+            onClick={handleClick}
+            className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+          >
+            {" "}
+            Add Employee
+          </button>
+        </div>
+      )}
 
       <div>
-
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-          {isEdit &&
-          <div>
-            <EmployeeUpdateForm />
-            <button
-  onClick={() => setIsEdit(false)}
-  className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
->
-  Back
-</button>
-
+          {isEdit && (
+            <div>
+              <EmployeeUpdateForm />
+              <button
+                onClick={() => setIsEdit(false)}
+                className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+              >
+                Back
+              </button>
             </div>
-          }
-          {isView &&
-          <div>
-            <button onClick={() => setIsEdit(false)} className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"> Back </button>
+          )}
+          {isView && (
+            <div>
+              <button
+                onClick={() => setIsEdit(false)}
+                className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+              >
+                {" "}
+                Back{" "}
+              </button>
 
-            <PersonalInformationForm />
-            <EducationForm />
-            <DependentsForm />
-            <WorkExperienceForm />
-          </div>
-          }
-          {!isEdit && !isView &&
+              <PersonalInformationFormView />
+              <EducationForm />
+              <DependentsForm />
+              <WorkExperienceForm />
+            </div>
+          )}
+          {!isEdit && !isView && (
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -97,42 +108,48 @@ const Employees = () => {
                 </tr>
               </thead>
               <tbody>
-                {Array.isArray(employeeData.data) && employeeData.data.map(employee => (
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {employee.employeeCode}
-                    </th>
-                    <td className="px-6 py-4">
-                      {employee.name}
-                    </td>
-                    <td className="px-6 py-4">
-                      {employee.email}
-                    </td>
-                    <td className="px-6 py-4">
-                      {employee.department}
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <button onClick={() => setIsEdit(true)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <button onClick={() => setIsView(true)} className="font-medium text-green-600 dark:text-red-500 hover:underline">View</button>
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <button onClick={() => handleDelete(employee._id)} className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                    </td>
-                  </tr>
-                ))}
+                {Array.isArray(employeeData.data) &&
+                  employeeData.data.map((employee) => (
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      >
+                        {employee.employeeCode}
+                      </th>
+                      <td className="px-6 py-4">{employee.name}</td>
+                      <td className="px-6 py-4">{employee.email}</td>
+                      <td className="px-6 py-4">{employee.department}</td>
+                      <td className="px-6 py-4 text-right">
+                        <button
+                          onClick={() => setIsEdit(true)}
+                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                        >
+                          Edit
+                        </button>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <button
+                          onClick={() => setIsView(true)}
+                          className="font-medium text-green-600 dark:text-red-500 hover:underline"
+                        >
+                          View
+                        </button>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <button
+                          onClick={() => handleDelete(employee._id)}
+                          className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
-
-          }
-
+          )}
         </div>
-
-
-
-
-
       </div>
     </>
   );
