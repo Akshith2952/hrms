@@ -3,17 +3,23 @@ const Leave = require('../models/LeaveApplicationModel');
 // Create a new leave application
 const createLeave = async (req, res) => {
   try {
-    const { employeeName, leaveType, startDate, endDate, reason } = req.body;
+    const { name, email, leaveType, startDate, endDate, reason } = req.body;
     const newLeave = new Leave({
-        employeeName,
+      name,
+      email,
       leaveType,
       startDate,
       endDate,
       reason,
-      leaveStatus: 'Pending'
+      leaveStatus: 'Pending',
     });
     await newLeave.save();
-    res.status(201).json({ message: 'Leave application created successfully', data: newLeave });
+    res
+      .status(201)
+      .json({
+        message: 'Leave application created successfully',
+        data: newLeave,
+      });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
@@ -54,7 +60,10 @@ const updateLeaveById = async (req, res) => {
     }
     leave.leaveStatus = req.body.leaveStatus || leave.leaveStatus;
     await leave.save();
-    res.json({ message: 'Leave application updated successfully', data: leave });
+    res.json({
+      message: 'Leave application updated successfully',
+      data: leave,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
@@ -62,24 +71,24 @@ const updateLeaveById = async (req, res) => {
 };
 
 const deleteLeaveById = async (req, res) => {
-    const { id } = req.params;
-    try {
-      const leave = await Leave.findById(id);
-      if (!leave) {
-        return res.status(404).json({ message: 'Leave not found' });
-      }
-      await leave.remove();
-      res.json({ message: 'Leave deleted successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server error' });
+  const { id } = req.params;
+  try {
+    const leave = await Leave.findById(id);
+    if (!leave) {
+      return res.status(404).json({ message: 'Leave not found' });
     }
-  };
+    await leave.remove();
+    res.json({ message: 'Leave deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
 
 module.exports = {
   createLeave,
   getAllLeaves,
   getLeaveById,
   updateLeaveById,
-  deleteLeaveById
+  deleteLeaveById,
 };
