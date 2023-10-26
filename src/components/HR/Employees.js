@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import EmployeeUpdateForm from "./Forms/EmployeeUpdateForm";
 import DependentsForm from "../DependentsForm";
 import PersonalInformationFormView from "../PersonalInformationFormView";
-import EducationForm from "../EducationForm";
+import EducationFormView from "../EducationFormView";
 import WorkExperienceForm from "../WorkExperienceForm";
 
 const Employees = () => {
@@ -86,8 +86,8 @@ const Employees = () => {
                 Back{" "}
               </button>
 
-              {/* <PersonalInformationFormView /> */}
-              <EducationForm />
+              <PersonalInformationFormView />
+              <EducationFormView />
               <DependentsForm />
               <WorkExperienceForm />
             </div>
