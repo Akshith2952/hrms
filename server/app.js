@@ -44,7 +44,7 @@ app.get('/contact', (req, res) => {
 app.get('/signin', (req, res) => {
   res.send(`Hello Login world from the server`);
 });
-
+  
 app.get('/signup', (req, res) => {
   res.send(`Hello Registration world from the server`);
 });

@@ -1,26 +1,30 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const EmployeeUpdateForm = () => {
+const EmployeeUpdateForm = (props) => {
   const nav = useNavigate()
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
-  const [gender, setGender] = useState('');
-  const [name, setName] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
-  const [contactNumber, setContactNumber] = useState('');
-  const [employeeCode, setEmployeeCode] = useState('');
-  const [department, setDepartment] = useState('');
-  const [dateOfJoining, setDateOfJoining] = useState('');
-
+  const [email, setEmail] = useState(props.data.email);
+  const [password, setPassword] = useState(props.data.password);
+  const [role, setRole] = useState(props.data.role);
+  const [gender, setGender] = useState(props.data.role);
+  const [name, setName] = useState(props.data.name);
+  const [dateOfBirth, setDateOfBirth] = useState(props.data.dateOfBirth);
+  const [contactNumber, setContactNumber] = useState(props.data.contactNumber);
+  const [employeeCode, setEmployeeCode] = useState(props.data.employeeCode);
+  const [department, setDepartment] = useState(props.data.department);
+  const [dateOfJoining, setDateOfJoining] = useState(props.data.dateOfJoining);
+  useEffect(() => {
+    
+  console.log(props.data);
+  } )
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     try {
-      const res = await axios.post('http://localhost:5000/employees', {
+      const res = await axios.post('http://localhost:5000/employees/add', {
         email,
         password,
         role,
@@ -30,14 +34,13 @@ const EmployeeUpdateForm = () => {
         contactNumber,
         employeeCode,
         department,
-        dateOfJoining
+        dateOfJoining,
       });
       console.log(res.data);
+      alert("Updated successfully ")
       nav('/hr/dashboard')
-      // do something with the response, like redirect to a success page or show a success message
     } catch (error) {
       console.error(error);
-      // handle error, like showing an error message to the user
     }
   };
 

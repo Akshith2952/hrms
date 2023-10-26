@@ -30,8 +30,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/hr" element={<HR />}>
           <Route path="dashboard" element={<HRDashBoard />} />
-          <Route path="salary/add" element={<HRDashBoard />} />
-          <Route path="employee/add" element={<HRDashBoard />} />
+          {/* <Route path="salary/add" element={<HRDashBoard />} /> */}
+          {/* <Route path="employee/add" element={<HRDashBoard />} /> */}
         </Route>
 
         {/* <Route path="/hr/dashboard" element={<HRDashBoard /> } /> */}

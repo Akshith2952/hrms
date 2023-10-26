@@ -10,7 +10,6 @@ const leaveApplicationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
   leaveType: {
     type: String,
     required: true,

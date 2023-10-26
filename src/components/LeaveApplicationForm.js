@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import axios from "axios";
 const LeaveApplicationForm = () => {
   const [formData, setFormData] = useState({
     leaveType: '',
@@ -15,7 +16,13 @@ const LeaveApplicationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform form submission or data processing here
+    axios.post("http://localhost:5000/leaves", {name: "mihir" ,email : "mihir@gmail.com" , ...formData})
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(formData);
   };
 
@@ -90,13 +97,13 @@ const LeaveApplicationForm = () => {
           </div>
         </div>
         <div className="text-center">
-  <button
-    type="submit"
-    className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 mt-4 rounded-md"
-  >
-    Submit
-  </button>
-</div>
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 mt-4 rounded-md"
+          >
+            Submit
+          </button>
+        </div>
 
       </form>
     </div>

@@ -18,6 +18,7 @@ const Employees = () => {
   };
 
   const [employeeData, setEmployeeData] = useState([]);
+  const [selectedEmployee, setSelectedEmployee] = useState();
 
   useEffect(() => {
     axios
@@ -42,9 +43,14 @@ const Employees = () => {
       });
   };
 
+  const setIsEditNew = (e) => {
+    setSelectedEmployee(e)
+    setIsEdit(true);
+  }
+
   return (
     <>
-      {!isEdit && (
+      {!isEdit && !isView && (
         <div className="flex items-center justify-between bg-gray-200 p-4">
           <h2 className="text-2xl font-bold text-gray-800">Employee Details</h2>
           <button
@@ -61,7 +67,7 @@ const Employees = () => {
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
           {isEdit && (
             <div>
-              <EmployeeUpdateForm />
+              <EmployeeUpdateForm data = {selectedEmployee} />
               <button
                 onClick={() => setIsEdit(false)}
                 className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
@@ -73,14 +79,14 @@ const Employees = () => {
           {isView && (
             <div>
               <button
-                onClick={() => setIsEdit(false)}
+                onClick={() => setIsView(false)}
                 className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
               >
                 {" "}
                 Back{" "}
               </button>
 
-              <PersonalInformationFormView />
+              {/* <PersonalInformationFormView /> */}
               <EducationForm />
               <DependentsForm />
               <WorkExperienceForm />
@@ -122,7 +128,7 @@ const Employees = () => {
                       <td className="px-6 py-4">{employee.department}</td>
                       <td className="px-6 py-4 text-right">
                         <button
-                          onClick={() => setIsEdit(true)}
+                          onClick={() => setIsEditNew(employee)}
                           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                         >
                           Edit
