@@ -2,15 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmployeeUpdateForm from "./Forms/EmployeeUpdateForm";
-import DependentsForm from "../DependentsForm";
-<<<<<<< HEAD
+import DependentsFormView from "./Forms/FormViews/DependentsFormView";
+
 import PersonalInformationFormView from "./Forms/FormViews/PersonalInformationFormView";
 import EducationFormView from "./Forms/FormViews/EducationFormView";
-=======
-import PersonalInformationFormView from "../PersonalInformationFormView";
-import EducationFormView from "../EducationFormView";
->>>>>>> f6d96a75e76f2163bdad34895ee1f424394fdead
-import WorkExperienceForm from "../WorkExperienceForm";
+
+
+
+import WorkExperienceFormView from "./Forms/FormViews/WorkExperienceFormView";
 import EmployeeForm from "./Forms/EmployeeForm";
 
 const Employees = () => {
@@ -104,8 +103,8 @@ const Employees = () => {
 
               <PersonalInformationFormView />
               <EducationFormView />
-              <DependentsForm />
-              <WorkExperienceForm />
+              <DependentsFormView />
+              <WorkExperienceFormView />
             </div>
           )}
           {!isEdit && !isView && (

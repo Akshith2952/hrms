@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DependentsForm = () => {
+const DependentsFormView = () => {
   const [formData, setFormData] = useState({
     name: '',
     relation: '',
@@ -12,16 +12,16 @@ const DependentsForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Perform form submission or data processing here
-    console.log(formData);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Perform form submission or data processing here
+  //   console.log(formData);
+  // };
 
   return (
     <div className="bg-gray-100 p-6">
       <h2 className="text-2xl font-bold mb-4">Dependents</h2>
-      <form onSubmit={handleSubmit}>
+      <form >
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label htmlFor="name" className="block font-medium text-gray-800">Name</label>
@@ -78,16 +78,16 @@ const DependentsForm = () => {
           </div>
         </div>
         <div className="text-center">
-  <button
+  {/* <button
     type="submit"
     className="block mx-auto bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 mt-4 rounded-md"
   >
     Submit
-  </button>
+  </button> */}
 </div>
       </form>
     </div>
   );
 };
 
-export default DependentsForm;
+export default DependentsFormView;
