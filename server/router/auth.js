@@ -6,8 +6,8 @@ router.get('/', (req, res) => {
   res.send(`Hello world from the server rotuer js`);
 });
 
-router.post('/register', authRoute.register);
+// router.post('/register', authRoute.register);
 
-router.post('/signin', authRoute.login);
+// router.post('/signin', authRoute.login);
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const User = require('../models/userSchema');
+// const Employee = require('../models/')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Salary = require('../models/SalaryModel');

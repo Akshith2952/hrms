@@ -3,18 +3,24 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmployeeUpdateForm from "./Forms/EmployeeUpdateForm";
 import DependentsForm from "../DependentsForm";
-import PersonalInformationFormView from "../PersonalInformationFormView";
-import EducationForm from "../EducationForm";
+import PersonalInformationFormView from "./Forms/FormViews/PersonalInformationFormView";
+import EducationFormView from "./Forms/FormViews/EducationFormView";
 import WorkExperienceForm from "../WorkExperienceForm";
+import EmployeeForm from "./Forms/EmployeeForm";
 
 const Employees = () => {
   const navigate = useNavigate();
 
   const [isEdit, setIsEdit] = useState(false);
   const [isView, setIsView] = useState(false);
+  const [isAddEmployeeFormVisible, setIsAddEmployeeFormVisible] = useState(false);
 
-  const handleClick = () => {
-    navigate("/hr/employee/add");
+  const showAddEmployeeForm = () => {
+    setIsAddEmployeeFormVisible(true);
+  };
+
+  const closeAddEmployeeForm = () => {
+    setIsAddEmployeeFormVisible(false);
   };
 
   const [employeeData, setEmployeeData] = useState([]);
@@ -54,7 +60,7 @@ const Employees = () => {
         <div className="flex items-center justify-between bg-gray-200 p-4">
           <h2 className="text-2xl font-bold text-gray-800">Employee Details</h2>
           <button
-            onClick={handleClick}
+            onClick={showAddEmployeeForm}
             className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
           >
             {" "}
@@ -63,11 +69,16 @@ const Employees = () => {
         </div>
       )}
 
+      {isAddEmployeeFormVisible && (
+        
+        <EmployeeForm onClose={closeAddEmployeeForm} />
+      )}
+
       <div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
           {isEdit && (
             <div>
-              <EmployeeUpdateForm data = {selectedEmployee} />
+              <EmployeeUpdateForm data={selectedEmployee} />
               <button
                 onClick={() => setIsEdit(false)}
                 className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
@@ -86,8 +97,8 @@ const Employees = () => {
                 Back{" "}
               </button>
 
-              {/* <PersonalInformationFormView /> */}
-              <EducationForm />
+              <PersonalInformationFormView />
+              <EducationFormView />
               <DependentsForm />
               <WorkExperienceForm />
             </div>

@@ -7,6 +7,8 @@ const employeeRoutes = require('./router/EmployeeRoutes');
 const salaryRoutes = require('./router/SaalaryRoutes');
 const LeaveRoutes = require('./router/LeaveRoutes');
 const userRoutes = require('./router/user');
+const Employee = require('./models/EmployeeModel')
+
 app.use(cors({ origin: '*' }));
 
 dotenv.config({ path: './config.env' });
@@ -44,9 +46,27 @@ app.get('/contact', (req, res) => {
 app.get('/signin', (req, res) => {
   res.send(`Hello Login world from the server`);
 });
-  
+
 app.get('/signup', (req, res) => {
   res.send(`Hello Registration world from the server`);
+});
+
+app.post('/signin', async (req, res) => {
+  try{
+    const { email, password } = req.body
+    const response = await Employee.findOne( { email : email } )
+    if( !response ){
+      res.status(301).json( { message : "email not exist" } )
+    }
+    if( password !== response.password ){
+      res.status(305).json( { message : "Incorrect password" } )
+    }
+    // const ot = response.json();
+    res.send(response)
+  }
+  catch{
+    console.log("err");
+  }
 });
 
 app.use('/employees', employeeRoutes);

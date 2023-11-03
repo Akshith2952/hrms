@@ -1,24 +1,6 @@
 import React, { useState } from "react";
 
 const PersonalInformationFormView = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    gender: "",
-    address: "",
-    dateOfBirth: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Perform form submission or data processing here
-    console.log(formData);
-  };
 
   return (
     <div className="bg-gray-100 p-6">
@@ -33,8 +15,8 @@ const PersonalInformationFormView = () => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
+              // value={formData.name}
+              // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
             />
@@ -47,8 +29,8 @@ const PersonalInformationFormView = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              // value={formData.email}
+              // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
             />
@@ -61,8 +43,8 @@ const PersonalInformationFormView = () => {
               type="text"
               id="phone"
               name="phone"
-              value={formData.phone}
-              onChange={handleChange}
+              // value={formData.phone}
+              // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
             />
@@ -74,8 +56,8 @@ const PersonalInformationFormView = () => {
             <select
               id="gender"
               name="gender"
-              value={formData.gender}
-              onChange={handleChange}
+              // value={formData.gender}
+              // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
             >
@@ -95,8 +77,8 @@ const PersonalInformationFormView = () => {
             <textarea
               id="address"
               name="address"
-              value={formData.address}
-              onChange={handleChange}
+              // value={formData.address}
+              // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
             ></textarea>
@@ -112,8 +94,8 @@ const PersonalInformationFormView = () => {
               type="date"
               id="dateOfBirth"
               name="dateOfBirth"
-              value={formData.dateOfBirth}
-              onChange={handleChange}
+              // value={formData.dateOfBirth}
+              // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
             />

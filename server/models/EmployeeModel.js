@@ -17,32 +17,49 @@ const employeeSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    required: true
   },
   name: {
     type: String,
-    required: true
   },
   dateOfBirth: {
     type: Date,
-    required: true
   },
   contactNumber: {
     type: String,
-    required: true
   },
   employeeCode: {
     type: String,
-    required: true,
     unique: true
   },
   department: {
     type: String,
-    required: true
   },
   dateOfJoining: {
     type: Date,
-    required: true
+  },
+  university:{
+    type:String
+  },
+  degree:{
+    type:String
+  },
+  grade:{
+    type:String
+  },
+  yearOfPassing:{
+    type:String
+  },
+  dependentName:{
+    type:String
+  },
+  dependentRelation:{
+    type:String
+  },
+  dependentDOB:{
+    type:String
+  },
+  dependentOccupation:{
+    type:String
   }
 });
 

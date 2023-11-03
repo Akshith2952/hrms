@@ -2,24 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "./Loader";
-// import Alert from "../Components/Alert";
 
 const Login = ({ history }) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({ email: "", password: "" });
-  //   const [error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState();
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const userInfo = localStorage.getItem("userInfo");
+    const userInfo = localStorage.getItem("userInfo");
 
-  //   if (userInfo) {
-  //     navigate("/Home");
-  //   }
+    if (userInfo) {
+      navigate("/employee/Home");
+    }
 
-  // }, [history, user, navigate]);
+  }, [history, user, navigate]);
 
   let key, val;
   const handleInputs = (e) => {
@@ -49,7 +48,7 @@ const Login = ({ history }) => {
         );
         console.log(data);
         navigate("/employee/Home");
-        // localStorage.setItem("userInfo", JSON.stringify(data));
+        localStorage.setItem("userInfo", JSON.stringify(data));
         setLoading(false);
       } catch (err) {
         //   setError(err.response.data.message);

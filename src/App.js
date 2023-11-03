@@ -1,8 +1,4 @@
-//import logo from "./logo.svg";
-//import Login from "./components/Login";
 import "./App.css";
-import NavBar from "./components/Navbar";
-
 import Home from "./components/Home";
 import About from "./components/About";
 import Login from "./components/Login";
@@ -20,7 +16,6 @@ import Employee from "./components/Employee";
 import HRDashBoard from "./components/HR/HRDashBoard";
 import Dashboard from "./components/Dashboard";
 import ChangePasswordForm from "./components/ChangePasswordForm";
-// import Dashboard from "./components/Dashboard";
 
 
 function App() {

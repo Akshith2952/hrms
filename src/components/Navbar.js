@@ -7,6 +7,7 @@ const NavBar = () => {
   const n = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,56 +18,66 @@ const NavBar = () => {
     n('/Login')
     // window.location('/Login')
   }
- 
-  useEffect( () => {
+
+  useEffect(() => {
     //console.log(isLogin);
     const userInfo = localStorage.getItem("userInfo")
-    if( userInfo ){
+    if (userInfo) {
       setIsLogin(true)
+      setUserData(userInfo)
       console.log(isLogin);
     }
     //console.log(userInfo);
-  }, [isLogin] )
+  }, [isLogin])
 
   return (
     <nav className="bg-blue-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex flex-row items-center">
-              {/* <img src="logo1.png" alt="Logo" className="h-8 w-8  " />{" "} */}
-              {/* Add your logo here */}
-              <h1 className="text-white font-bold m-4">EmpowHR</h1>
-            </div>
-
-            
-
-            <div className="ml-10 flex items-baseline space-x-4">
-              <a
-                href="/"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Home
-              </a>
-              <a
-                href="/employee/dashboard"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Dashboard
-              </a>
-              <a
-                href="/Login"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Login
-              </a>
-              <button
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleLogout}
-              >
-                Logout
-              </button>
-            </div>
+        <div className="flex items-center justify-between">
+          <div className="flex flex-row items-center">
+            {/* <img src="logo1.png" alt="Logo" className="h-8 w-8  " />{" "} */}
+            {/* Add your logo here */}
+            <h1 className="text-white font-bold m-4">EmpowHR</h1>
           </div>
-          {/* <div className="-mr-2 flex md:hidden">
+          <div className="ml-10 flex items-baseline space-x-4">
+            <a
+              href="/"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Home
+            </a>
+            {
+              userData && (
+                <a href="/employee/dashboard"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Dashboard
+                </a>
+              )
+            }
+
+            {
+              !isLogin && (
+                <a
+                  href="/Login"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Login
+                </a>
+              )
+            }
+            {
+              isLogin && (
+                <button
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              )
+            }
+          </div>
+        </div>
+        {/* <div className="-mr-2 flex md:hidden">
             <button
               onClick={toggleMenu}
               type="button"
@@ -110,7 +121,7 @@ const NavBar = () => {
               )}
             </button>
           </div> */}
-        </div>
+      </div>
       {isMenuOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">

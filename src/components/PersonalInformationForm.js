@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const PersonalInformationForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +9,23 @@ const PersonalInformationForm = () => {
     address: "",
     dateOfBirth: "",
   });
+
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+
+    if (userInfo) {
+      const userData = JSON.parse(userInfo);
+
+      setFormData({
+        name: userData.name,
+        email: userData.email,
+        phone: userData.contactNumber,
+        gender: userData.gender,
+        address: userData.address,
+        dateOfBirth: userData.dateOfBirth,
+      });
+    }
+  }, []); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
