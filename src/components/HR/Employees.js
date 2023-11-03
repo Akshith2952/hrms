@@ -3,8 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmployeeUpdateForm from "./Forms/EmployeeUpdateForm";
 import DependentsForm from "../DependentsForm";
+<<<<<<< HEAD
 import PersonalInformationFormView from "./Forms/FormViews/PersonalInformationFormView";
 import EducationFormView from "./Forms/FormViews/EducationFormView";
+=======
+import PersonalInformationFormView from "../PersonalInformationFormView";
+import EducationFormView from "../EducationFormView";
+>>>>>>> f6d96a75e76f2163bdad34895ee1f424394fdead
 import WorkExperienceForm from "../WorkExperienceForm";
 import EmployeeForm from "./Forms/EmployeeForm";
 
