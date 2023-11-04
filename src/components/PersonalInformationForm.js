@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import axios from 'axios'
 const PersonalInformationForm = () => {
+  const [id, setId] = useState()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -9,23 +10,48 @@ const PersonalInformationForm = () => {
     address: "",
     dateOfBirth: "",
   });
-
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");
 
     if (userInfo) {
       const userData = JSON.parse(userInfo);
 
-      setFormData({
-        name: userData.name,
-        email: userData.email,
-        phone: userData.contactNumber,
-        gender: userData.gender,
-        address: userData.address,
-        dateOfBirth: userData.dateOfBirth,
-      });
+      axios.get(`http://localhost:5000/employees/${userData._id}`)
+        .then((response) => {
+          console.log(response)
+          const user = response.data.data;
+          setFormData({
+            name: user.name,
+            email: user.email,
+            phone: user.contactNumber,
+            gender: user.gender,
+            address: user.address,
+            dateOfBirth: user.dateOfBirth,
+          });
+          setId( userData._id )
+        })
+        .catch((error) => {
+          console.error("Error fetching employee data:", error);
+        });
     }
-  }, []); 
+  }, []);
+
+  //   const userInfo = localStorage.getItem("userInfo");
+
+  //   if (userInfo) {
+  //     const userData = JSON.parse(userInfo);
+
+  //     setFormData({
+  //       name: userData.name,
+  //       email: userData.email,
+  //       phone: userData.contactNumber,
+  //       gender: userData.gender,
+  //       address: userData.address,
+  //       dateOfBirth: userData.dateOfBirth,
+  //     });
+  //     setId(userData._id)
+  //   }
+  // }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,7 +59,17 @@ const PersonalInformationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform form submission or data processing here
+    axios
+      .put(`http://localhost:5000/employees/${id}`, formData)
+      .then((response) => {
+        // Handle the response as needed
+        console.log("Employee information updated successfully:", response.data);
+        alert("Employee information updated successfully")
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error updating employee information:", error);
+      });
     console.log(formData);
   };
 

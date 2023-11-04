@@ -22,7 +22,7 @@ const employeeSchema = new mongoose.Schema({
     type: String,
   },
   dateOfBirth: {
-    type: Date,
+    type: String,
   },
   contactNumber: {
     type: String,
@@ -35,7 +35,7 @@ const employeeSchema = new mongoose.Schema({
     type: String,
   },
   dateOfJoining: {
-    type: Date,
+    type: String,
   },
   university:{
     type:String
@@ -59,6 +59,21 @@ const employeeSchema = new mongoose.Schema({
     type:String
   },
   dependentOccupation:{
+    type:String
+  },
+  address:{
+    type:String
+  },
+  previousJob:{
+    type:String
+  },
+  previousCompany:{
+    type:String
+  },
+  startDate:{
+    type:String
+  },
+  endDate:{
     type:String
   }
 });

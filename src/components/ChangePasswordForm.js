@@ -1,53 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ChangePasswordForm() {
-  const [currentPassword, setCurrentPassword] = useState('');
+  const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
-  const handleChangePassword = async (e) => {
-    e.preventDefault();
+  const [id, setId] = useState();
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
 
-    try {
-      const response = await fetch('/api/change-password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ currentPassword, newPassword }),
-      });
-
-      if (response.ok) {
-        // Password changed successfully
-        // Reset the form and show a success message
-        setCurrentPassword('');
-        setNewPassword('');
-        setError('');
-        setSuccess(true);
-      } else {
-        const data = await response.json();
-        setError(data.message);
-      }
-    } catch (error) {
-      setError('An error occurred. Please try again.');
+    if (userInfo) {
+      const userData = JSON.parse(userInfo);
+      setId(userData._id)
     }
+  }, []);
+
+  // Add your useEffect code to fetch the user's data here
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:5000/employees/${id}`, { password: newPassword }) // Assuming your API endpoint accepts the new password
+      .then((response) => {
+        // Handle the response as needed
+        console.log("Password changed successfully:", response.data);
+        setSuccess(true); // Set success state to true
+      })
+      .catch((error) => {
+        // Handle errors
+        setError("Error changing password. Please check your current password.");
+        console.error("Error changing password:", error);
+      });
   };
 
   return (
     <div className="max-w-md mx-auto">
       <h2 className="text-2xl font-bold mb-4">Change Password</h2>
-      <form onSubmit={handleChangePassword}>
+      <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="currentPassword" className="block mb-2 font-medium">
+          <label htmlFor="password" className="block mb-2 font-medium">
             Current Password:
           </label>
           <input
             type="password"
-            id="currentPassword"
+            id="password"
             className="w-full border border-gray-300 rounded-md p-2"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="mb-4">

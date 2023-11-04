@@ -2,7 +2,6 @@ import React from 'react'
 import { Routes, Route } from "react-router-dom";
 import NavBar from './Navbar';
 import Dashboard from './Dashboard';
-import Home from './Home';
 
 const Employee = () => {
   return (
