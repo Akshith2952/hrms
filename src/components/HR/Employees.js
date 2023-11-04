@@ -6,9 +6,6 @@ import DependentsFormView from "./Forms/FormViews/DependentsFormView";
 
 import PersonalInformationFormView from "./Forms/FormViews/PersonalInformationFormView";
 import EducationFormView from "./Forms/FormViews/EducationFormView";
-
-
-
 import WorkExperienceFormView from "./Forms/FormViews/WorkExperienceFormView";
 import EmployeeForm from "./Forms/EmployeeForm";
 
@@ -60,6 +57,7 @@ const Employees = () => {
 
   return (
     <>
+    
       {!isEdit && !isView && (
         <div className="flex items-center justify-between bg-gray-200 p-4">
           <h2 className="text-2xl font-bold text-gray-800">Employee Details</h2>
@@ -175,5 +173,4 @@ const Employees = () => {
     </>
   );
 };
-
 export default Employees;
