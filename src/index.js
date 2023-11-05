@@ -4,7 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHome, faBook, faUsers, faBriefcase, faDollarSign, faClipboard, faCalendar, faLock } from '@fortawesome/free-solid-svg-icons';
 
+// library.add(faHome, faBook, faUsers, faBriefcase, faDollarSign, faClipboard, faCalendar, faLock);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
