@@ -12,7 +12,8 @@ import WorkExperienceFormView from "./Forms/FormViews/WorkExperienceFormView";
 const Employees = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [isView, setIsView] = useState(false);
-  const [isAddEmployeeFormVisible, setIsAddEmployeeFormVisible] = useState(false);
+  const [isAddEmployeeFormVisible, setIsAddEmployeeFormVisible] =
+    useState(false);
   const [employeeData, setEmployeeData] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [searchInput, setSearchInput] = useState("");
@@ -47,9 +48,12 @@ const Employees = () => {
 
   const handleSearchAndFilter = () => {
     const filteredData = employeeData.data.filter((employee) => {
-      const nameMatches = employee.name.toLowerCase().includes(searchInput.toLowerCase());
+      const nameMatches = employee.name
+        .toLowerCase()
+        .includes(searchInput.toLowerCase());
       const departmentMatches =
-        departmentFilter === "All" || employee.department.toLowerCase() === departmentFilter.toLowerCase();
+        departmentFilter === "All" ||
+        employee.department.toLowerCase() === departmentFilter.toLowerCase();
       return nameMatches && departmentMatches;
     });
     setFilteredEmployeeData(filteredData);
@@ -69,7 +73,10 @@ const Employees = () => {
 
   const indexOfLastEmployee = currentPage * employeesPerPage;
   const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
-  const currentEmployees = filteredEmployeeData.slice(indexOfFirstEmployee, indexOfLastEmployee);
+  const currentEmployees = filteredEmployeeData.slice(
+    indexOfFirstEmployee,
+    indexOfLastEmployee
+  );
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -81,22 +88,21 @@ const Employees = () => {
   //       console.error("Error exporting to CSV: ", err);
   //       return;
   //     }
-  
+
   //     const blob = new Blob([csv], { type: "text/csv" });
   //     const url = window.URL.createObjectURL(blob);
-  
+
   //     const a = document.createElement("a");
   //     a.style.display = "none";
   //     a.href = url;
   //     a.download = "employee_data.csv";
-  
+
   //     document.body.appendChild(a);
   //     a.click();
-  
+
   //     window.URL.revokeObjectURL(url);
   //   });
   // };
-  
 
   return (
     <div className="container mx-auto">
@@ -108,37 +114,43 @@ const Employees = () => {
         >
           Add Employee
         </button>
-        
       </div>
 
-      {isAddEmployeeFormVisible && <EmployeeForm onClose={closeAddEmployeeForm} />}
+      {isAddEmployeeFormVisible && (
+        <EmployeeForm onClose={closeAddEmployeeForm} />
+      )}
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         {isEdit && (
           <div>
             <EmployeeUpdateForm data={selectedEmployee} />
-            <button
+            {/* <button
               onClick={() => setIsEdit(false)}
               className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
             >
               Back
-            </button>
+            </button> */}
           </div>
         )}
 
         {isView && (
           <div>
-            <button
-              onClick={() => setIsView(false)}
-              className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
-            >
-              Back
-            </button>
-
-            <PersonalInformationFormView />
-            <EducationFormView />
-            <DependentsFormView />
-            <WorkExperienceFormView />
+            <div className="fixed inset-0 flex items-center justify-center z-50 margin: 0;">
+              <div className="h-96 w-96 overflow-y-auto bg-white p-8 border border-gray-300 relative">
+                <button
+                  onClick={() => setIsView(false)}
+                  className="absolute top-4 right-4 color: black; font-size: 24px; font-medium py-2 px-4 rounded-md"
+                >
+                  X
+                </button>
+                <div>
+                  <PersonalInformationFormView />
+                  <EducationFormView />
+                  <DependentsFormView />
+                  <WorkExperienceFormView />
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -207,61 +219,71 @@ const Employees = () => {
             <tbody>
               {Array.isArray(currentEmployees) &&
                 currentEmployees.map((employee) => (
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={employee.employeeCode}>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  <tr
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                    key={employee.employeeCode}
                   >
-                    {employee.employeeCode}
-                  </th>
-                  <td className="px-6 py-4">{employee.name}</td>
-                  <td className="px-6 py-4">{employee.email}</td>
-                  <td className="px-6 py-4">{employee.department}</td>
-                  <td className="px-6 py-4 text-right">
-                    <button
-                      onClick={() => setIsEditNew(employee)}
-                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
-                      Edit
-                    </button>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <button
-                      onClick={() => setIsView(true)}
-                      className="font-medium text-green-600 dark:text-red-500 hover:underline"
-                    >
-                      View
-                    </button>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <button
-                      onClick={() => handleDelete(employee._id)}
-                      className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                      {employee.employeeCode}
+                    </th>
+                    <td className="px-6 py-4">{employee.name}</td>
+                    <td className="px-6 py-4">{employee.email}</td>
+                    <td className="px-6 py-4">{employee.department}</td>
+                    <td className="px-6 py-4 text-right">
+                      <button
+                        onClick={() => setIsEditNew(employee)}
+                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
+                        Edit
+                      </button>
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <button
+                        onClick={() => setIsView(true)}
+                        className="font-medium text-green-600 dark:text-red-500 hover:underline"
+                      >
+                        View
+                      </button>
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <button
+                        onClick={() => handleDelete(employee._id)}
+                        className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         )}
 
         {filteredEmployeeData.length > employeesPerPage && (
           <div className="mt-4 flex justify-center">
-            {Array.from({ length: Math.ceil(filteredEmployeeData.length / employeesPerPage) }, (_, index) => (
-              <button
-                key={index}
-                className={`${
-                  currentPage === index + 1
-                    ? "bg-blue-500 hover:bg-blue-600 text-white"
-                    : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                } px-4 py-2 rounded-full font-medium mx-2`}
-                onClick={() => paginate(index + 1)}
-              >
-                {index + 1}
-              </button>
-            ))}
+            {Array.from(
+              {
+                length: Math.ceil(
+                  filteredEmployeeData.length / employeesPerPage
+                ),
+              },
+              (_, index) => (
+                <button
+                  key={index}
+                  className={`${
+                    currentPage === index + 1
+                      ? "bg-blue-500 hover:bg-blue-600 text-white"
+                      : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                  } px-4 py-2 rounded-full font-medium mx-2`}
+                  onClick={() => paginate(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              )
+            )}
           </div>
         )}
       </div>
@@ -270,4 +292,3 @@ const Employees = () => {
 };
 
 export default Employees;
-
