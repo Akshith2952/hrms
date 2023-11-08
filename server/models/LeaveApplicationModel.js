@@ -26,6 +26,9 @@ const leaveApplicationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  empId:{
+    type:String
+  },
   leaveStatus: {
     type: String,
     default: 'Pending',

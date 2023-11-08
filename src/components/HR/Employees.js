@@ -46,6 +46,11 @@ const Employees = () => {
     setIsEdit(true);
   };
 
+  const setIsViewNew = (e) => {
+    setSelectedEmployee(e);
+    setIsView(true);
+  };
+
   const handleSearchAndFilter = () => {
     const filteredData = employeeData.data.filter((employee) => {
       const nameMatches = employee.name
@@ -106,16 +111,16 @@ const Employees = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="flex items-center justify-between bg-gray-200 p-4">
+      {!isEdit && !isView && (<div className="flex items-center justify-between bg-gray-200 p-4">
         <h2 className="text-2xl font-bold text-gray-800">Employee Details</h2>
         <button
           onClick={showAddEmployeeForm}
           className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
-          
         >
           Add Employee
         </button>
-      </div>
+      </div>)
+      }
 
       {isAddEmployeeFormVisible && (
         <EmployeeForm onClose={closeAddEmployeeForm} />
@@ -131,36 +136,31 @@ const Employees = () => {
             >
               Back
             </button> */}
-            {/* <button
-                  onClick={() => setIsEdit(false)}
-                  className="absolute top-4 right-4 color: black; font-size: 24px; font-medium py-2 px-4 rounded-md"
-                >
-                  X
-                </button> */}
+            <button
+              onClick={() => setIsEdit(false)}
+              className="absolute top-4 right-4 color: black; font-size: 24px; font-medium py-2 px-4 rounded-md"
+            >
+              X
+            </button>
           </div>
         )}
 
         {isView && (
           <div>
-            {/* <div className="fixed inset-0 flex items-center justify-center z-50 margin: 0;"> */}
-              {/* <div className="h-120 w-96 overflow-y-auto bg-white p-8 border border-gray-300 relative"> */}
-              <button
-                onClick={() => setIsView(false)}
-                className="absolute top-4 right-4 color: black; font-size: 24px; font-medium py-2 px-4 rounded-md"
-              >
-                X
-              </button>
-              <div>
-                  <PersonalInformationFormView />
-                  <EducationFormView />
-                  <DependentsFormView />
-                  <WorkExperienceFormView />
-                </div>
-             
-            </div>
-          // </div>
-          // </div>
+            <button
+              onClick={() => setIsView(false)}
+              className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+            >
+              Back
+            </button>
+
+            <PersonalInformationFormView data={selectedEmployee} />
+            <EducationFormView data={selectedEmployee} />
+            <DependentsFormView data={selectedEmployee} />
+            <WorkExperienceFormView data={selectedEmployee} />
+          </div>
         )}
+
 
         {!isEdit && !isView && (
           <div className="bg-gray-200 p-4">
@@ -250,7 +250,7 @@ const Employees = () => {
                     </td>
                     <td className="px-6 py-4 text-right">
                       <button
-                        onClick={() => setIsView(true)}
+                        onClick={() => setIsViewNew(employee)}
                         className="font-medium text-green-600 dark:text-red-500 hover:underline"
                       >
                         View
@@ -281,11 +281,10 @@ const Employees = () => {
               (_, index) => (
                 <button
                   key={index}
-                  className={`${
-                    currentPage === index + 1
+                  className={`${currentPage === index + 1
                       ? "bg-blue-500 hover:bg-blue-600 text-white"
                       : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                  } px-4 py-2 rounded-full font-medium mx-2`}
+                    } px-4 py-2 rounded-full font-medium mx-2`}
                   onClick={() => paginate(index + 1)}
                 >
                   {index + 1}

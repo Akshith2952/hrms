@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const PersonalInformationFormView = () => {
-
+const PersonalInformationFormView = ({data}) => {
+  console.log(data)
   return (
     <div className="bg-gray-100 p-6">
       <h2 className="text-2xl font-bold mb-4">Personal Information</h2>
@@ -15,7 +15,7 @@ const PersonalInformationFormView = () => {
               type="text"
               id="name"
               name="name"
-              // value={formData.name}
+              value={data.name}
               // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
@@ -29,7 +29,7 @@ const PersonalInformationFormView = () => {
               type="email"
               id="email"
               name="email"
-              // value={formData.email}
+              value={data.email}
               // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
@@ -43,7 +43,7 @@ const PersonalInformationFormView = () => {
               type="text"
               id="phone"
               name="phone"
-              // value={formData.phone}
+              value={data.contactNumber}
               // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
@@ -56,7 +56,7 @@ const PersonalInformationFormView = () => {
             <select
               id="gender"
               name="gender"
-              // value={formData.gender}
+              value={data.gender}
               // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
@@ -77,7 +77,7 @@ const PersonalInformationFormView = () => {
             <textarea
               id="address"
               name="address"
-              // value={formData.address}
+              value={data.address}
               // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required
@@ -94,7 +94,7 @@ const PersonalInformationFormView = () => {
               type="date"
               id="dateOfBirth"
               name="dateOfBirth"
-              // value={formData.dateOfBirth}
+              value={data.dateOfBirth}
               // onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 w-full"
               required

@@ -1,27 +1,56 @@
-import React, { useState } from 'react';
-
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const LeaveApplicationForm = () => {
-  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  const [userInfo, setUserInfo] = useState({});
   const [formData, setFormData] = useState({
-    name: userInfo.name,
-    email: userInfo.email,
-    leaveType: "",
+    name: '',
+    email: '',
+    leaveType: '',
     startDate: '',
     endDate: '',
     reason: '',
+    empId: '',
     leaveStatus: 'Pending',
   });
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('userInfo'));
+    setUserInfo(user);
+
+    // Fetch existing leave data from the server and update the form
+    axios
+      .get(`http://localhost:5000/leaves/${user._id}`)
+      .then((response) => {
+        const existingLeaveData = response.data.data;
+        if (existingLeaveData) {
+          setFormData({
+            ...formData,
+            name: user.name,
+            email: user.email,
+            leaveType: existingLeaveData.leaveType,
+            startDate: existingLeaveData.startDate,
+            endDate: existingLeaveData.endDate,
+            reason: existingLeaveData.reason,
+            empId: existingLeaveData.empId,
+            leaveStatus: existingLeaveData.leaveStatus,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [formData]); // Add formData to the dependency array to avoid a potential loop
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/leaves", formData)
+    // Send the updated formData to the server
+    axios
+      .post('http://localhost:5000/leaves', formData)
       .then((response) => {
         console.log(response);
       })
@@ -30,7 +59,6 @@ const LeaveApplicationForm = () => {
       });
     console.log(formData);
   };
-
   return (
     <div className="bg-gray-100 p-6">
       <h2 className="text-2xl font-bold mb-4">Leave Application</h2>
@@ -104,12 +132,11 @@ const LeaveApplicationForm = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 mt-4 rounded-md"
+            className="bg-blue-500 hover-bg-blue-600 text-white font-medium py-2 px-4 mt-4 rounded-md"
           >
             Submit
           </button>
         </div>
-
       </form>
     </div>
   );

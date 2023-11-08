@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const WorkExperienceFormView = () => {
+const WorkExperienceFormView = ({data}) => {
   const [formData, setFormData] = useState({
-    jobTitle: '',
-    companyName: '',
-    startDate: '',
-    endDate: '',
+    jobTitle: data.previousJob,
+    companyName: data.previousCompany,
+    startDate: data.startDate,
+    endDate: data.endDate,
   });
 
   const handleChange = (e) => {

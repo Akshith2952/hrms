@@ -6,7 +6,9 @@ const leaveController = require('../Controllers/LeaveApplicationController');
 router.get('/', leaveController.getAllLeaves);
 
 // GET a single leave application by ID
-router.get('/:id', leaveController.getLeaveById);
+// router.get('/:id', leaveController.getLeaveById);
+
+router.get('/:empId', leaveController.getLeaveByEmpId);
 
 // POST a new leave application
 router.post('/', leaveController.createLeave);

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const DependentsFormView = () => {
+const DependentsFormView = ({data}) => {
   const [formData, setFormData] = useState({
-    name: '',
-    relation: '',
-    dateOfBirth: '',
-    occupation: '',
+    name: data.dependentName,
+    relation: data.dependentRelation,
+    dateOfBirth: data.dependentDOB,
+    occupation: data.dependentOccupation,
   });
 
   const handleChange = (e) => {

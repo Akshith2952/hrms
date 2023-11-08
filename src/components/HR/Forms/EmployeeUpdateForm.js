@@ -18,7 +18,7 @@ const EmployeeUpdateForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/employees/add', {
+      const res = await axios.put(`http://localhost:5000/employees/${props.data._id}`, {
         email,
         password,
         role,
@@ -32,6 +32,7 @@ const EmployeeUpdateForm = (props) => {
       });
       console.log(res.data);
       alert("Updated successfully");
+      window.location.reload()
       nav('/hr/dashboard');
     } catch (error) {
       console.error(error);
@@ -41,7 +42,7 @@ const EmployeeUpdateForm = (props) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6">
-        <button className="text-2xl float-right" onClick={() => nav('/hr/dashboard')}>
+        <button className="text-2xl float-right" onClick={() => window.location.reload()}>
           X
         </button>
         <div className="flex items-center">

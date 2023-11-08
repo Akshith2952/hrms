@@ -3,7 +3,7 @@ const Leave = require('../models/LeaveApplicationModel');
 // Create a new leave application
 const createLeave = async (req, res) => {
   try {
-    const { name, email, leaveType, startDate, endDate, reason } = req.body;
+    const { name, email, leaveType, startDate, empId, endDate, reason } = req.body;
     const newLeave = new Leave({
       name,
       email,
@@ -11,6 +11,7 @@ const createLeave = async (req, res) => {
       startDate,
       endDate,
       reason,
+      empId,
       leaveStatus: 'Pending',
     });
     await newLeave.save();
@@ -48,6 +49,24 @@ const getLeaveById = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+//getleave by email
+const getLeaveByEmpId = async (req, res) => {
+  try {
+    const empId = req.params.empId;
+    const leave = await Leave.find({ empId: empId });
+
+    if (!leave) {
+      return res.status(404).json({ message: 'Leave application not found' });
+    }
+
+    res.json({ data: leave });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 
 // Update a leave application by ID
 const updateLeaveById = async (req, res) => {
@@ -88,4 +107,5 @@ module.exports = {
   getLeaveById,
   updateLeaveById,
   deleteLeaveById,
+  getLeaveByEmpId
 };

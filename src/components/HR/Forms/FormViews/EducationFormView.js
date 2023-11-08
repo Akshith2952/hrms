@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const EducationFormView = () => {
+const EducationFormView = ({data}) => {
   const [formData, setFormData] = useState({
-    school: '',
-    degree: '',
-    grade: '',
-    yearOfPassing: '',
+    school: data.university,
+    degree: data.degree,
+    grade: data.grade,
+    yearOfPassing: data.yearOfPassing,
   });
 
   const handleChange = (e) => {
