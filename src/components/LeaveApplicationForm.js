@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 
 import axios from "axios";
+
 const LeaveApplicationForm = () => {
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   const [formData, setFormData] = useState({
-    leaveType: '',
+    name: userInfo.name,
+    email: userInfo.email,
+    leaveType: "",
     startDate: '',
     endDate: '',
     reason: '',
@@ -14,9 +18,10 @@ const LeaveApplicationForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/leaves", {name: "mihir" ,email : "mihir@gmail.com" , ...formData})
+    axios.post("http://localhost:5000/leaves", formData)
       .then((response) => {
         console.log(response);
       })

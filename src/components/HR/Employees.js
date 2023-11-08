@@ -111,6 +111,7 @@ const Employees = () => {
         <button
           onClick={showAddEmployeeForm}
           className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+          
         >
           Add Employee
         </button>
@@ -130,28 +131,35 @@ const Employees = () => {
             >
               Back
             </button> */}
+            {/* <button
+                  onClick={() => setIsEdit(false)}
+                  className="absolute top-4 right-4 color: black; font-size: 24px; font-medium py-2 px-4 rounded-md"
+                >
+                  X
+                </button> */}
           </div>
         )}
 
         {isView && (
           <div>
-            <div className="fixed inset-0 flex items-center justify-center z-50 margin: 0;">
-              <div className="h-96 w-96 overflow-y-auto bg-white p-8 border border-gray-300 relative">
-                <button
-                  onClick={() => setIsView(false)}
-                  className="absolute top-4 right-4 color: black; font-size: 24px; font-medium py-2 px-4 rounded-md"
-                >
-                  X
-                </button>
-                <div>
+            {/* <div className="fixed inset-0 flex items-center justify-center z-50 margin: 0;"> */}
+              {/* <div className="h-120 w-96 overflow-y-auto bg-white p-8 border border-gray-300 relative"> */}
+              <button
+                onClick={() => setIsView(false)}
+                className="absolute top-4 right-4 color: black; font-size: 24px; font-medium py-2 px-4 rounded-md"
+              >
+                X
+              </button>
+              <div>
                   <PersonalInformationFormView />
                   <EducationFormView />
                   <DependentsFormView />
                   <WorkExperienceFormView />
                 </div>
-              </div>
+             
             </div>
-          </div>
+          // </div>
+          // </div>
         )}
 
         {!isEdit && !isView && (
